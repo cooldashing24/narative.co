@@ -32,25 +32,6 @@ interface Person {
 
 export const illustrationQuery = graphql`
   query GetIllustrations {
-    brad: file(name: { regex: "/portrait-illustration-brad-active/" }) {
-      childImageSharp {
-        fluid(maxWidth: 1170, quality: 100) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    bradInactive: file(
-      name: { regex: "/portrait-illustration-brad-inactive/" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1170, quality: 100) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    bradSig: file(name: { regex: "/brad-signature/" }) {
-      publicURL
-    }
     dan: file(name: { regex: "/portrait-illustration-dan-active/" }) {
       childImageSharp {
         fluid(maxWidth: 1170, quality: 100) {
@@ -153,22 +134,7 @@ function AboutTeam() {
         `https://www.instagram.com/tcosta.co/`,
       ],
     },
-    {
-      name: `Brad Tiller`,
-      role: `Marketing and Growth`,
-      illustrationInactive: illustrations.bradInactive,
-      illustration: illustrations.brad,
-      signature: illustrations.bradSig.publicURL,
-      about: [
-        `In marketing everything from children’s toys to point of sale software to office space, I’ve noticed that the most consistent obstacles to success come from putting the business’s needs ahead of the customer’s.`,
-        `It can be tempting to chase metrics that make short-term growth feel exponential, or create features to fill a strategic gap. But products can succeed and scale only after earning their place in customers’ lives. To generate ongoing value, you first have to deliver it.`,
-        `We build everything around an understanding of what success looks like — for both customers and company — and how to tie the two together.`,
-      ],
-      social: [
-        `https://twitter.com/bradtiller`,
-        `https://www.linkedin.com/in/bradtiller/`,
-      ],
-    },
+
     {
       name: `Dennis Brotzky`,
       role: `Frontend Engineering`,
@@ -339,7 +305,7 @@ function AboutTeam() {
         {isDesktop ? (
           <Sticky
             cover
-            height="3300px"
+            height="1600px"
             render={({ progress: prog }: StickyState) => {
               return (
                 <Section narrow>
@@ -723,11 +689,11 @@ const TeamCardsContainer = React.memo(styled.div`
 
 const Cards = React.memo(styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 390px);
+  grid-template-columns: repeat(4, 390px);
   grid-column-gap: 20px;
 
   ${media.phablet`
-    grid-template-columns: repeat(5, 90vw);
+    grid-template-columns: repeat(4, 90vw);
     grid-column-gap: 10px;
   `}
 `)
